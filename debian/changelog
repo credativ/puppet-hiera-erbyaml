@@ -1,0 +1,5 @@
+puppet-module-hiera-erbyaml (1.0.0) unstable; urgency=low
+
+  * Initial release.
+
+ -- Damian Lukowski <damian.lukowski@credativ.de>  Tue, 30 Dec 2014 12:34:56 +0200

@@ -16,7 +16,7 @@ class Hiera
 
         Backend.datasources(scope, order_override) do |source|
           Hiera.debug("Looking for data source #{source}")
-          yamlfile = Backend.datafile(:yaml, scope, source, "yaml") || next
+          yamlfile = Backend.datafile(:erbyaml, scope, source, "yaml") || next
 
           # If you call stale? BEFORE you do encounter the YAML.load_file line
           # it will populate the @cache variable and return true. The second
@@ -24,9 +24,9 @@ class Hiera
           # populated. Because of this there are two conditions to check:
           # is @data[yamlfile] populated AND is the cache stale.
           if @data[yamlfile]
-            @data[yamlfile] = YAML.load(Erubis::Eruby.new(File.read(yamlfile)).evaluate()) if stale?(yamlfile)
+            @data[yamlfile] = YAML.load(Erubis::Eruby.new(File.read(yamlfile, :encoding => 'UTF-8')).evaluate()) if stale?(yamlfile)
           else
-            @data[yamlfile] = YAML.load(Erubis::Eruby.new(File.read(yamlfile)).evaluate())
+            @data[yamlfile] = YAML.load(Erubis::Eruby.new(File.read(yamlfile, :encoding => 'UTF-8')).evaluate())
           end
 
           next if ! @data[yamlfile]

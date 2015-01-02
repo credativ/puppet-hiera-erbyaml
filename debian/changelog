@@ -1,3 +1,9 @@
+puppet-module-hiera-erbyaml (1.0.1) unstable; urgency=low
+
+  * use utf8 encoding and correct backend datadir
+
+ -- Damian Lukowski <damian.lukowski@credativ.de>  Fri, 02 Jan 2015 12:32:35 +0100
+
 puppet-module-hiera-erbyaml (1.0.0) unstable; urgency=low
 
   * Initial release.
